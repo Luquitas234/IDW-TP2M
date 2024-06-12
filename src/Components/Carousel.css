@@ -1,0 +1,23 @@
+#carouselExampleControlsNoTouching {
+    position: relative;
+    margin-top: 110px;
+    width:30%;
+    height: auto;
+    margin-left: 20px;
+}
+
+#carouselExample{
+    position: relative;
+    margin-top: -424px;
+    width:30%;
+    height: auto;
+    margin-left: 650px;
+}
+
+#carouselExampleFade{
+    position: absolute;
+    margin-top: -424px;
+    width:30%;
+    height: auto;
+    margin-left: 1300px;
+}
