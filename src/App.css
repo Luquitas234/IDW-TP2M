@@ -49,6 +49,8 @@ body{
     transform: rotate(360deg);
   }
 }
+
+
 /***************************************************************************************************/
 
 .navbar {
@@ -83,7 +85,7 @@ body{
   height: 32px;
   border-radius: 50%;
   margin-right: 15px;
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
 }
 .menu-icon {
   font-size: 24px;
@@ -114,56 +116,6 @@ body{
 }
 
 
-/*********************Carousel**********************************************/
-.Carouseles{
-  position: absolute;
-}
-/* .carousel {
-  position: relative;
-  width: 400px; 
-  height: 400px; 
-  overflow: hidden;
-  margin-left: 110px;
-   
-}
-.carousel img {
-  width: 100%; 
-  height: 100%; 
-  display: none;
-  object-fit: cover;
-}
-.carousel img.active {
-  display: block;
-  
-}
-.carousel button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.7);
-  border: none;
-  font-size: 2em;
-  padding: 10px;
-}
-.carousel button.prev {
-  left: 10px;
-  
-}
-.carousel button.next {
-  right: 10px;
-  
-}
-
-#carousel2{
-  margin-left: 690px;
-  margin-top: -400px;
-
-}
-#carousel3{
-  margin-left: 1250px;
-  margin-top: -400px;
-
-} */
 /********************************* Segundo Carousel**************************************************/
 .carousel {
   position: relative;
@@ -288,4 +240,122 @@ body{
 }
 .Pie-pagina .grupo-2 small{
   font-size: 15px;
+}
+
+
+
+/*****************************************DEMAS ESTILOS*************************************************************/ 
+.Btn-Tipoalojamiento{
+  position: relative;
+  top: -800px;
+  left: -100px;
+  max-width: 300px;
+  margin: 0 auto;
+  right: 550px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.Btn-Tipoalojamiento {
+  display: flex;
+  margin-right: 10px;
+  flex-direction: column; /* Coloca los elementos en columna */
+  gap: 10px; /* Espacio entre los botones */
+}
+
+/******************************************************************************************************/
+
+.Btn-Alojamientos{
+  position: relative;
+  top: -1030px;
+  right: 600px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px ;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.Btn-Alojamientos  {
+  display: flex;
+  flex-direction: column; /* Coloca los elementos en columna */
+  gap: 10px; /* Espacio entre los botones */
+}
+
+
+
+.Btn-Servicios{
+  top: -900px;
+  right: 600px;
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+
+}
+
+.Btn-Servicios{
+  display: flex;
+  flex-direction: column; /* Coloca los elementos en columna */
+  gap: 10px; /* Espacio entre los botones */
+}
+
+.Btn-ServicioRelacion{
+  position: relative;
+  top: -1200px;
+  left: 650px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.Btn-ServicioRelacion  {
+  display: flex;
+  flex-direction: column; /* Coloca los elementos en columna */
+  gap: 10px; /* Espacio entre los botones */
+}
+
+.Btn-CrearImagine{
+  top:-1100px;
+  right: 600px;
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.Btn-CrearImagine {
+  display: flex;
+  flex-direction: column; /* Coloca los elementos en columna */
+  gap: 10px; /* Espacio entre los botones */
+}
+
+
+/*************************************************************************************************************/
+.TablaDatos{
+  position: relative;
+  left: 150px;
+  border: 1px solid #000;
+  border-collapse: separate;
+  border-spacing: 5px;
+}
+
+
+.tablaDatos td , th{
+  position: relative;
+  left: 150px;
+  padding: 10px;
+  text-align: center;
+  background-color: #f0f0f0;
 }
