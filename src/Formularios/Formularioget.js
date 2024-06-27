@@ -1,37 +1,122 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import axios from 'axios';
+import "./Formularioget.css";
+import "./EstilosFormularios.css";
+import { Link } from 'react-router-dom';
 
 const GetForm = () => {
   const [id, setId] = useState('');
   const [data, setData] = useState(null);
+  const [allData, setAllData] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.get("http://localhost:3001/tiposAlojamiento/getTiposAlojamiento");
-      setData(response.data);
-      alert('Datos obtenidos exitosamente');
+      const response = await axios.get(`http://localhost:3001/tiposAlojamiento/getTipoAlojamiento/${id}`);
+      if (response.status === 200) {
+        if (response.data === "") {
+          setError("No Hay Datos con esa ID.");
+        } else {
+          setData(response.data);
+          alert('Datos obtenidos exitosamente');
+          console.log(data);
+        }
+      } else {
+        setError(`Error al obtener los datos: ${response.status}`);
+      }
     } catch (error) {
-      console.error(error);
-      alert('Hubo un error al obtener los datos');
+      if (error.response && error.response.status === 404) {
+        setError(`ingrese una ID `);
+      } else {
+        setError('Error al obtener los datos');
+      }
     }
   };
 
+  const handleGetAll = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3001/tiposAlojamiento/getTiposAlojamiento`);
+      if (response.status === 200) {
+        setAllData(response.data);
+        alert('Todos los datos obtenidos exitosamente');
+        console.log(allData);
+      } else {
+        setError(`Error al obtener todos los datos: ${response.status}`);
+      }
+    } catch (error) {
+      setError('Error al obtener todos los datos');
+    }
+  };
+
+  const handleClear = () => {
+    setId('');
+    setData(null);
+    setAllData(null);
+    setError(null);
+    document.getElementById('limpiar').focus();
+  };
+
   return (
-    <div>
+    <div id='form3' className='form-get'>
       <form onSubmit={handleSubmit}>
         <label>
           ID del dato a obtener:
-          <input type="text" value={id} onChange={(e) => setId(e.target.value)}  />
+          <input id='limpiar' type="text" value={id} onChange={(e) => setId(e.target.value)} require />
         </label>
         <button type="submit">Obtener</button>
+        <button type="button" onClick={handleGetAll}>Obtener Todos</button>
+        <button type="button" onClick={handleClear}>Limpiar</button>
+        <Link to="/Gestion"><button>Volver</button></Link>
       </form>
-      {data && (
-        <div>
-          <h2>Datos obtenidos:</h2>
-          <pre>{JSON.stringify(data, null, 2)}</pre>
+      {error && (
+        <div style={{ color: 'red' }}>
+          <p>{error}</p>
         </div>
       )}
+      <div className="data-container">
+        {data && (
+          <div>
+            <h2>Datos obtenidos:</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Identificaion</th>
+                  <th>Descripcion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{data.idTipoAlojamiento}</td>
+                  <td>{data.Descripcion}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        )}
+        {allData && (
+          <div>
+            <h2>Todos los datos:</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th> id </th>
+                  <th>Descripcion</th>
+                  {/* Agrega las columnas que necesites */}
+                </tr>
+              </thead>
+              <tbody>
+                {allData.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.idTipoAlojamiento}</td>
+                    <td>{item.Descripcion}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
@@ -68,70 +153,187 @@ export default GetForm;
 
 
 
-// import { useState } from "react";
 
-// function Formularioget () {
-//   const [ descripcion, setDescripcion] = useState("");
-  
-//   const Buscar = async (e) => {
-//     e.preventDefault();
-    
-    
-    
-//     try{
-//       const respose = await fetch('http://localhost:3001/tiposAlojamiento/getTiposAlojamiento',{
-//         method:'GET',
-//         headers: {
-//           'Content-type': 'application/json',
-//         },
-        
-        
-//       });
-//       if(respose.ok) {
-//         alert('Lista Cargada');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState } from 'react';
+// import axios from 'axios';
+// import "./Formularioget.css";
+// import "./EstilosFormularios.css";
+// import { Link } from 'react-router-dom';
+
+// const GetForm = () => {
+//   const [id, setId] = useState('');
+//   const [data, setData] = useState(null);
+//   const [error, setError] = useState(null);
+//   const [allData, setAllData] = useState(null); 
+
+//   const handleSubmit = async (event) => {
+//     event.preventDefault();
+//     try {
+//       const response = await axios.get(`http://localhost:3001/tiposAlojamiento/getTipoAlojamiento/${id}`);
+//       if (response.status === 200) {
+//         if (response.data === "") {
+//           setError("No Hay Datos con esa ID.");
+//         } else {
+//           setData(response.data);
+//           alert('Datos obtenidos exitosamente');
+//           console.log(data);
+//         }
+//       } else {
+//         setError(`Error al obtener los datos: ${response.status}`);
 //       }
-//       else{
-//         console.error('Error');
-//         alert('Error al buscar el alojamiento tipo');
+//     } catch (error) {
+//       if (error.response && error.response.status === 404) {
+//         setError(`ingrese una ID `);
+//       } else {
+//         setError('Error al obtener los datos');
 //       }
-//       }catch (error){
-//         console.error('Error',error);
-//         alert('Error al establecer el servicio');
-        
+//     }
+//   };
+
+//   const handleGetAll = async () => {
+//     try {
+//       const response = await axios.get(`http://localhost:3001/tiposAlojamiento/getTiposAlojamiento`);
+//       if (response.status === 200) {
+//         setAllData(response.data);
+//         alert('Todos los datos obtenidos exitosamente');
+//         console.log(allData);
+//       } else {
+//         setError(`Error al obtener todos los datos: ${response.status}`);
 //       }
-//   }
+//     } catch (error) {
+//       setError('Error al obtener todos los datos');
+//     }
+//   };
+
+//   const handleClear = () => {
+//     setId('');
+//     setData('');
+//     setError(null);
+//     setAllData(null);
+//     document.getElementById('limpiar').focus();
+//   };
+
 //   return (
-//     <div className='form-container'>
-//       <h1>Buscar Alojamientos</h1>
-//       <form onSubmit={Buscar}>
-//         <div>
-//           <label htmlFor='descripcion'>Descripcion:</label>
-//           <input
-//             type='text'
-//             id='descripcion'
-//             value={descripcion}
-//             onChange={(e) => setDescripcion(e.target.value)}
-//           />
-//         </div>
-//         <button type='submit'>Buscar</button>
+//     <div id='form3' className='form-get'>
+//       <form onSubmit={handleSubmit}>
+//         <label>
+//           ID del dato a obtener:
+//           <input id='limpiar' type="text" value={id} onChange={(e) => setId(e.target.value)} require />
+//         </label>
+//         <button type="submit">Obtener</button>
+//         <button type="button" onClick={handleClear}>Limpiar</button>
+//         <button type="button" onClick={handleGetAll}>Obtener Todos</button>
+//         <Link to="/Gestion"><button>Volver</button></Link>
+//         {error && (
+//           <div style={{ color: 'ed' }}>
+//             <p>{error}</p>
+//           </div>
+//         )}
 //       </form>
-//       <div>
-//         <h2>Lista de los Alojamientos</h2>
-//         <table>
-//           <thead>
-//             <tr>
-//               <th>Descripcion</th>
-//             </tr>
-//           </thead>
-//           <tbody id='e'> 
-
-//           </tbody>
-//         </table>
-//       </div>
+//       {data && (
+//         <div>
+//           <h2>Datos obtenidos:</h2>
+//           <pre>{JSON.stringify(data, null, 2)}</pre>
+//         </div>
+//       )}
+//       {allData && (
+//         <div>
+//           <h2>Todos los datos:</h2>
+//           <pre>{JSON.stringify(allData, null, 2)}</pre>
+//         </div>
+//       )}
 //     </div>
-    
-//   )
-
+//   );
 // };
 
-// export default Formularioget;
+// export default GetForm;
