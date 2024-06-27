@@ -1,0 +1,28 @@
+/* styles.css */
+.carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.carousel img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+  
+.carousel p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.carousel img,
+.carousel p {
+  transition: opacity 0.3s ease;
+}
+
+.carousel img:hover,
+.carousel p:hover {
+  opacity: 0.8;
+}
