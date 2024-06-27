@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Formulariodelete';
-
+import './Formulariodelete.css';
+import { Link } from 'react-router-dom';
 const DeleteForm = () => {
   const [id, setId] = useState('');
 
@@ -18,13 +18,16 @@ const DeleteForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        ID del dato a eliminar:
-        <input type="text" value={id} onChange={(event) => setId(event.target.value)}  />
-      </label>
-      <button type="submit">Eliminar</button>
-    </form>
+    <div id='form2' className='form'>
+      <form  onSubmit={handleSubmit}>
+        <label>
+          ID del dato a eliminar:
+          <input type="text" value={id} onChange={(event) => setId(event.target.value)}  />
+        </label>
+        <button type="submit">Eliminar</button>
+        <Link to="/Gestion"><button>Volver</button></Link>
+      </form>
+    </div>
   );
 };
 
