@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import "./AddAlojamientotipo.css";
 
 const AddAlojamientotipo = () => {
@@ -31,8 +32,7 @@ const AddAlojamientotipo = () => {
       }
   }
   return (
-    <div className='form-container'>
-      <h1>Alta de Tipo Alojamiento</h1>
+    <div id='form1' className='form-container'>
       <form onSubmit={enviar}>
         <div>
           <label htmlFor='descripcion'>Descripcion:</label>
@@ -43,7 +43,8 @@ const AddAlojamientotipo = () => {
             onChange={(e) => setDescripcion(e.target.value)}
           />
         </div>
-        <button type='submit'>Enviar</button>
+        <button type='submit'>Agregar</button>
+        <Link to="/Gestion"><button>Volver</button></Link>
       </form>
     </div>
   )
