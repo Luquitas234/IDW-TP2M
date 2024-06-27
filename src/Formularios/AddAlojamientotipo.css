@@ -1,13 +1,15 @@
 /* Estilos generales del formulario */
 
-form {
+.form-container {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
-  }
+    
+    
+}
   
   /* Estilos para los campos de entrada */
   input[type="text"],
@@ -35,14 +37,6 @@ form {
     background-color: #0056b3;
   }
   
-  /* Estilos para la lista de alojamientos */
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    margin-bottom: 10px;
-    font-size: 14px;
-  }
-  
+
+
+ 
